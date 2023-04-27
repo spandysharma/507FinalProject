@@ -5,7 +5,8 @@ html {
 
 h2 {
     font-size: large;
-    color: bisque;
+    font-weight: lighter;
+    color: aliceblue;
 }
 
 body {
@@ -19,8 +20,25 @@ p {
     padding-left: 5%;
 }
 
+a, a:link, a:visited {
+    font-size: 16px;
+    overflow: hidden;
+    color: bisque;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+#buttons {
+    padding-left: 0;
+    margin-top: 40px;
+}
+
+
+
 p:nth-child(2n) {
-    color: #B388EB;
+    color: #c8a1fa;
 }
 
 p:nth-child(2n + 1) {

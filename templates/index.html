@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8"/>
+        <link rel="stylesheet" type="text/css" href="../static/index.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <title>RecGen</title>
+    </head>
+    <body>
+        <div class="login-box">
+            <form action="/handle_form" method="POST" id="mainForm">
+
+                <!-- <input type="submit" value="Generate Recs!!!"/> -->
+                <div class="user-box">
+                    <!-- <p>Please enter a game name: <input name="gameName" type="text"/> -->
+                    <!-- <input type="text" name="gameName" required="">
+                    <label id="userInput">Type a game name!!</label> -->
+                    <h2>Please choose a category below:</h2>
+                    <form action="/action_page.php" id="menu">
+                        <label class="buttons">
+                            <!-- <input type="radio" id="genre" name="genre" value="Genre"> -->
+                            <a href="{{url_for('genreMenu')}}">Genre</a>
+                        </label>
+                        <label class="buttons">
+                            <a href="{{url_for('genreMenu')}}">Number of Players</a>
+                        </label>
+                        <label class="buttons">
+                            <a href="{{url_for('genreMenu')}}">Company</a>
+                        </label>
+                        <label class="buttons">
+                            <a href="{{url_for('genreMenu')}}">Rating</a>
+                        </label>
+                    </form>  
+                </div>
+                <a href="#" onclick="document.getElementById('mainForm').submit()" id="graphics">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <!-- <input type="submit" value="Generate Recs!!!"/> -->
+                    <p>Next</p>
+                </a>
+            </form>
+        </div>
+    </body>
+    <footer>
+
+    </footer>
+</html>
+    
+    
