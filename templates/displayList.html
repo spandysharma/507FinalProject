@@ -1,0 +1,13 @@
+<link rel="stylesheet" type="text/css" href="../static/displayList.css"/>
+<h2>Here are results based on your search:</h2>
+{% for item in data %}
+    <p> {{ item }} </p>
+{% endfor %}
+<a href="templates/inputForm.html" onclick="document.getElementById('mainForm').submit()" id="graphics">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <!-- <input type="submit" value="Generate Recs!!!"/> -->
+    <p>Go Back</p>
+</a>

@@ -1,0 +1,78 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8"/>
+        <title>RecGen</title>
+        <link rel="stylesheet" href="../static/slider.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+    </body>
+    <footer>
+
+    </footer>
+</html> -->
+
+
+
+<link rel="stylesheet" href="../static/slider.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>RecGen</title>
+<input type="radio" id="trigger1" name="slider">
+<label for="trigger1"><span class="sr-only">Slide 1 of 5. A photo of a mountain pass with a winding path along the river and a view of distant mountains hiding in the mist.</span></label>
+<div class="slide bg1">
+    <p>HELLOOOOOOOOO</p>
+    
+    <div class="login-box">
+        <form action="/handle_form" method="POST" id="mainForm">
+
+            <div class="user-box">
+                <!-- <p>Please enter a game name: <input name="gameName" type="text"/> -->
+                <input type="text" name="gameName" required="">
+                <label>Type a game name!!</label>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                    </ul>
+                </div>
+                <!-- <input type="button" name="numPlayers" value=""> -->
+            </div>
+            <a href="#" onclick="document.getElementById('mainForm').submit()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <!-- <input type="submit" value="Generate Recs!!!"/> -->
+                Next
+            </a>
+        </form>
+    </div>
+
+</div>
+
+<input type="radio" id="trigger2" name="slider" checked autofocus>
+<label for="trigger2"><span class="sr-only">Slide 2 of 5. A photo of a bird eating sunflower seeds from an open hand.</span></label>
+<div class="slide bg2"></div>
+
+<input type="radio" id="trigger3" name="slider">
+<label for="trigger3"><span class="sr-only">Slide 3 of 5. A photo of a concrete bridge over the river with high voltage power lines on both banks.</span></label>
+<div class="slide bg3"></div>
+
+<input type="radio" id="trigger4" name="slider">
+<label for="trigger4"><span class="sr-only">Slide 4 of 5. A photo of a lake surrounded by the forest with mountains in the background.</span></label>
+<div class="slide bg4"></div>
+
+<input type="radio" id="trigger5" name="slider">
+<label for="trigger5"><span class="sr-only">Slide 5 of 5. A photo of a forest.</span></label>
+<div class="slide bg5"></div>
