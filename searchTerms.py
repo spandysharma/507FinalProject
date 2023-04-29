@@ -3,6 +3,10 @@ import json
 import requests
 import flask
 
+################################################################################
+
+'''Double authetication process for logging and using IGDB API'''
+
 clientId = "cjrl47h8vj7xu45bluva17is0fpb0c"
 clientSecret = "3b03ng6xwetf5l0zanbzvmkc3wuea2"
 
@@ -16,72 +20,140 @@ print(accessToken)
 myobj = \
 {"Client-ID": clientId,
 "Authorization": "Bearer " + accessToken,
-"Body": "fields *; where id = 1942;"}
-
-preferences = dict()
-preferences["genre"] = ""
-preferences["numPlayers"] = ""
-preferences["companies"] = ""
+"Body": "fields *;"}
 
 def performSearch(searchTerm):
+    '''performs user search based on text input'''
+
     if (searchTerm is not ""):
         reqPath = "https://api.igdb.com/v4/games"
-        # data = 'fields name,similar_games.name; search "' + searchTerm + '";'
-        # print("Searchterm=",searchTerm, "data=",data)
         data = 'fields name,genres.name; search "' + searchTerm + '";'
-        # data = 'fields name,genres,rating,involved_companies.company.name; #search "war";' # for searching by name
-        # data = 'fields name,rating; sort rating desc;' #for sorting based on ratings
-
-        # reqPath = "https://api.igdb.com/v4/game_modes"
-        # data = ''
 
         b = requests.post(reqPath, data=data, headers=myobj)
         print(b)
         bData = b.json()
         print(bData)
         return bData
-        # from igdb.wrapper import IGDBWrapper
-        # wrapper = IGDBWrapper("YOUR_CLIENT_ID", "YOUR_APP_ACCESS_TOKEN")
 
-# Genres
-# id 31 = Adventure 
-# 33 = Arcade
-# 10 = Racing
-# 9 = Puzzle
+################################################################################
+
+'''Offering limited options for categories'''
 
 genreLog = {"Adventure": 31 , "Arcade": 33 , "Racing": 10, "Puzzle": 9, "Strategy": 15, "Simulator": 13, "Indie": 32}
-# genreLog = {31: "Adventure" , 33: "Arcade", 10: "Racing", 9: "Puzzle"}
 
-# def idsToNames(ids):
-#     genreNames = []
-#     for currId in
+franchiseLog = {"Pac-Man": 892, "Austin Powers": 783, 'My Guardian Characters': 3798, "The Simpsons": 2214, "Bladerite": 4543, "Medabots": 450,
+                "Aeon Flux": 751, "Gradius": 775, 'Devil May Cry': 834, "Castle": 936}
 
-def performSearchMCQ(genre):
-    filteredResults = []
-    # if (preferencesDict["genre"] is not "" and preferencesDict["numPlayers"] is not ""
-    #     and preferencesDict["companies"] is not ""):
-    wantedGenre = genre
-    print("-----------------------------------------------------")
-    print(wantedGenre)
-    wantedGenreId = genreLog[wantedGenre]
+platformLog = {'Commodore CDTV': 158, 'Sega Pico': 339, 'PlayStation 2': 8, 'iOS': 39, 'Commodore Plus/4': 94, 
+               'AY-3-8710': 144, 'Odyssey': 88, 'Commodore PET': 90, 'Sol-20': 237, 'PC (Microsoft Windows)': 6}
+
+ratingLog = [8,9,10,13,20]
+
+################################################################################
+
+def searchByCategory(category):
+    '''takes different 4 categories (genre, platform, franchise, age rating)
+    and gives further input options to the user'''
+
+    if (category in genreLog):
+        filteredResults = []
+        wantedGenre = category
+        wantedGenreId = genreLog[wantedGenre]
+        
+        if (wantedGenre is not ""):
+            reqPath = "https://api.igdb.com/v4/games"
+            firstData = 'fields name,genres; where genres = ' + str(wantedGenreId) + ';'
+            b = requests.post(reqPath, data=firstData, headers=myobj)
+            bData = b.json()
+
+        for result in bData:
+            filteredResults.append(result['name'])
+        return filteredResults
+
+
+    elif (category in franchiseLog):
+        filteredResults = []
+        wantedFranchise = category
+        wantedFranchiseId = franchiseLog[wantedFranchise]
+        
+        if (wantedFranchise is not ""):
+            reqPath = "https://api.igdb.com/v4/games"
+            firstData = 'fields name,franchises; where franchises = ' + str(wantedFranchiseId) + ';'
+            b = requests.post(reqPath, data=firstData, headers=myobj)
+            bData = b.json()
+
+        for result in bData:
+            filteredResults.append(result['name'])
+        return filteredResults
     
-    if (wantedGenre is not ""):
+    elif (category in platformLog):
+        filteredResults = []
+        wantedPlatform = category
+        wantedPlatformId = platformLog[wantedPlatform]
+        
+        if (wantedPlatform is not ""):
+            reqPath = "https://api.igdb.com/v4/games"
+            firstData = 'fields name, platforms; where platforms = ' + str(wantedPlatformId) + ';'
+            b = requests.post(reqPath, data=firstData, headers=myobj)
+            bData = b.json()
+
+        for result in bData:
+            filteredResults.append(result['name'])
+        return filteredResults
+    
+    else:
+        filteredResults = []
+        wantedPlatform = category
+        wantedPlatformId = category
+ 
         reqPath = "https://api.igdb.com/v4/games"
-        firstData = 'fields name,genres; where genres = ' + str(wantedGenreId) + ';'
+        firstData = 'fields name, age_ratings.rating; where age_ratings.rating = ' + category + ';'
+        print(firstData)
         b = requests.post(reqPath, data=firstData, headers=myobj)
         bData = b.json()
-        print("bData=====================",bData)
-        # for result in bData:
-        #     # # print(result)
-        #     # if ('genres' in result):
-        #     #     ids = result['genres'] # will return a list like [8, 31]
-        #     #     if (wantedGenreId in ids):
-        #             filteredResults.append(result['name'])
-    # return filteredResults
-    for result in bData:
-        filteredResults.append(result['name'])
-    return filteredResults
+        print(bData)
 
-preferences["genre"] = "Adventure"
-print("RESULT-----------")
-print(performSearchMCQ("Adventure"))
+        for result in bData:
+            filteredResults.append(result['name'])
+        return filteredResults
+
+################################################################################
+
+'''ATTEMPT FOR USING TWITCH API TO GET EACH GAME'S POPULARITY'''
+
+'''print(performSearchMCQ("Adventure"))
+print(searchFranchise("Pac-Man"))
+ where genres = ' + str(wantedGenreId) + ';
+reqPath = "https://api.igdb.com/v4/games"
+# reqPath = "https://api.igdb.com/v4/platforms"
+firstData = 'fields name, age_ratings.rating; where age_ratings.rating = 8;'
+b = requests.post(reqPath, data=firstData, headers=myobj)
+bData = b.json()
+print("bData=====================",bData)
+
+def getPopularity(category):
+    gameList = searchByCategory(category)
+    for name in gameList:
+        lalla 
+
+newAccess = "https://id.twitch.tv/oauth2/token?client_id=cjrl47h8vj7xu45bluva17is0fpb0c&client_secret=3b03ng6xwetf5l0zanbzvmkc3wuea2&grant_type=client_credentials"
+newAccess = "https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=cjrl47h8vj7xu45bluva17is0fpb0c&redirect_uri=http://localhost:5000&scope=channel%3Amanage%3Apolls+channel%3Aread%3Apolls&state=c3ab8aa609ea11e793ae92361f002671"
+a = requests.post(newAccess)
+aData = a.json()
+print(aData)
+newAccessToken = aData["access_token"]
+print(newAccessToken)
+
+myobj = \
+{"Client-ID": clientId,
+"Authorization": "Bearer " + newAccessToken,
+"Body": "fields *;"}
+
+newReqPath = "https://api.twitch.tv/helix/analytics/games?game_id=244929"
+data = 'fields *;'
+
+b = requests.post(newReqPath, data=data, headers=myobj)
+print(b)
+bData = b.json()
+print(bData)
+searchByCategory("genre")'''

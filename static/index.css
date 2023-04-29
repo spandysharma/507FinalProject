@@ -1,4 +1,5 @@
-/* Inspired from CodePen (https://codepen.io/soufiane-khalfaoui-hassani/pen/LYpPWda?editors=1100) */
+/* Inspired from CodePen (https://codepen.io/soufiane-khalfaoui-hassani/pen/LYpPWda?editors=1100) 
+   and modified for my needs.*/
 
 html {
     height: 100%;
@@ -62,39 +63,17 @@ label {
     display: block;
     max-width: 100%;
     margin-bottom: 5px;
-    /* font-weight: 700; */
     color: #B388EB;
     animation: btn-anim4 1s linear infinite;
     animation-delay: .75s
 }
-
-/* .login-box .user-box label {
-    position: absolute;
-    top:0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-} */
-  
-/* .login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-    top: -20px;
-    left: 0;
-    color: #03e9f4;
-    font-size: 12px;
-} */
   
 .login-box form a {
     position: relative;
-    /* display: inline-block; */
     padding: 10px 20px;
     color: #03e9f4;
     font-size: 16px;
     text-decoration: none;
-    /* text-transform: uppercase; */
     overflow: hidden;
     transition: .5s;
     margin-top: 40px;
@@ -111,7 +90,6 @@ label {
                 0 0 100px #03e9f4;
 }
 
-/* MY CODE */
 input[type=submit]:hover {
     background: #03e9f4;
     color: #fff;
@@ -127,7 +105,6 @@ input[type=submit]:hover {
     display: block;
 }
 
-/* MY CODE */
 input[type=submit] span {
     position: absolute;
     display: block;
@@ -142,7 +119,6 @@ input[type=submit] span {
     animation: btn-anim1 1s linear infinite;
 }
 
-/* MY CODE */
 p {
     padding: auto;
     border-color: #B388EB;
@@ -173,7 +149,6 @@ p {
     animation-delay: .25s
 }
 
-
 @keyframes btn-anim2 {
     0% {
       top: -100%;
@@ -193,8 +168,6 @@ p {
     animation-delay: .5s
 }
 
-
-/* MY CODE */
 #menu {
     display: block;
 }

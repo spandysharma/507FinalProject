@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8"/>
+        <link rel="stylesheet" type="text/css" href="../static/genre.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <title>RecGen</title>
+    </head>
+    <body>
+        <div class="login-box">
+            <form action="/handle_form" method="POST" id="mainForm">
+
+                <div class="user-box">
+
+                    <h2>Please choose a platform to below:</h2>
+                    <form action="/action_page.php" id="menu">
+                        <label >
+                            <input id="rad1" type="radio" id="adventure" name="platform" value="Commodore CDTV">
+                            <span for="rad1">Commodore CDTV</span>
+                        </label>
+                        <label>
+                            <input id="rad2" type="radio" id="strategy" name="platform" value="Sega Pico">
+                            <span for="rad2">Sega Pico</span>
+                        </label>
+                        <label>
+                            <input id="rad3" type="radio" id="simulator" name="platform" value="PlayStation 2">
+                            <span for="rad3">PlayStation 2</span>
+                        </label>
+                        <label>
+                            <input id="rad4" type="radio" id="racing" name="platform" value="iOS">
+                            <span for="rad4">iOS</span>
+                        </label>
+                        <label>
+                            <input id="rad5" type="radio" id="arcade" name="platform" value="Commodore Plus/4">
+                            <span for="rad5">Commodore Plus/4</span>
+                        </label>
+                        <label>
+                            <input type="radio" id="indie" name="platform" value="AY-3-8710">
+                            <span>AY-3-8710</span>
+                        </label>
+                        <label>
+                            <input id="rad3" type="radio" id="simulator" name="platform" value="Odyssey">
+                            <span for="rad3">Odyssey</span>
+                        </label>
+                        <label>
+                            <input id="rad4" type="radio" id="racing" name="platform" value="Commodore PET">
+                            <span for="rad4">Commodore PET</span>
+                        </label>
+                        <label>
+                            <input id="rad5" type="radio" id="arcade" name="platform" value="Sol-20">
+                            <span for="rad5">Sol-20</span>
+                        </label>
+                        <label>
+                            <input type="radio" id="indie" name="platform" value="PC (Microsoft Windows)">
+                            <span>PC (Microsoft Windows)</span>
+                        </label>
+                    </form>  
+                </div>
+                <a href="#" onclick="document.getElementById('mainForm').submit()" id="graphics">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <p>Next</p>
+                </a>
+            </form>
+        </div>
+    </body>
+    <footer>
+
+    </footer>
+</html>
+
+    

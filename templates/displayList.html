@@ -1,14 +1,6 @@
 <link rel="stylesheet" type="text/css" href="../static/displayList.css"/>
-<h2>Here are the results based on your search:</h2>
+<h2>Here are the TOP results based on your search:</h2>
 {% for item in data %}
     <p> {{ item }} </p>
 {% endfor %}
 <p id="buttons"><a href="{{url_for('index')}}">Go Back</a></p>
-<!-- <a href="templates/genre.html" onclick="document.getElementById('mainForm').submit()">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <input type="submit" value="Generate Recs!!!"/> 
-    <p id="buttons"><a href="{{url_for('index')}}">Go Back</a></p>
-</a> -->
