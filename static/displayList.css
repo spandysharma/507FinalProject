@@ -16,6 +16,14 @@ body {
     background: linear-gradient(#0f1828, #243b55);
 }
 
+img {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 200px;    
+    padding-right: 100px;
+}
+
 p {
     padding-left: 5%;
 }
